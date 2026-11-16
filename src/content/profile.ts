@@ -37,7 +37,7 @@ export const FOCUS_AREAS = [
 ] as const;
 
 export const BIO = [
-  "Hey, I'm Suvan. I study computer science at UTSA's Honors College. I finish my B.S. in May 2027 and continue straight into the accelerated M.S., which wraps up in May 2028.",
+  "Hey, I'm Suvan. I study computer science at UTSA's Honors College. I graduate with my B.S. in May 2027, and I'm looking for full-time new-grad roles.",
   "I build machine learning systems, and three kinds of work pull me in the most: agentic AI and the evaluations that keep agents honest, the infrastructure that trains models across many machines, and computer vision research.",
   "I like proving that something works instead of just claiming it. Almost everything I build ships with an ablation or a test suite behind it. FilingAgent's evaluation harness has 429 tests of its own, and Shipyard refuses to deploy an agent until it passes deterministic database checks.",
   "I've done that work in a computer vision lab, as an AI Intern at MITRE, and at hackathons, where I'm a 3x Hackathon Prize Winner. I built Shipyard solo in about 24 hours at HackTX 2026.",
@@ -50,12 +50,6 @@ export const EDUCATION = [
     degree: "B.S. Computer Science, Honors College",
     date: "Expected May 2027",
     detail: "GPA 3.97 · Dean's List",
-  },
-  {
-    school: "The University of Texas at San Antonio (UTSA)",
-    degree: "M.S. Computer Science (Accelerated B.S./M.S. Program)",
-    date: "Expected May 2028",
-    detail: "Accelerated program, starting Fall 2027",
   },
 ] as const;
 
@@ -120,7 +114,6 @@ export const AWARDS: readonly Award[] = [
 ];
 
 export const AVAILABILITY = [
-  { term: "Winter 2026–27", detail: "In person or remote, any role type" },
-  { term: "Spring 2027", detail: "Internships (remote / part-time while I'm in school)" },
-  { term: "Summer 2027", detail: "Internships or full-time new-grad roles" },
+  { term: "New grad", detail: "Looking for full-time new-grad roles" },
+  { term: "Graduating", detail: "B.S. Computer Science, May 2027" },
 ] as const;

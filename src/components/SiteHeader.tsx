@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { PROFILE } from "@/content/profile";
 import { GPA, NAV_TABS, PRIZE_STAT, isActiveTab } from "@/lib/site";
+import { SoundToggle } from "./SoundToggle";
 import { StatReadout } from "./ui/StatReadout";
 
 const MENU_ID = "site-menu";
@@ -91,6 +92,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex shrink-0 items-center justify-end gap-2 sm:gap-3">
+          <SoundToggle />
           <a
             href={PROFILE.resumeHref}
             target="_blank"

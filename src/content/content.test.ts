@@ -62,6 +62,17 @@ describe("source-wide guardrails", () => {
     // Assert
     expect(offenders).toEqual([]);
   });
+
+  test("the site no longer mentions the accelerated master's program", () => {
+    // Arrange: built at runtime so this file doesn't match its own scan
+    const retired = ["accel" + "erated m.s", "accel" + "erated b.s", "m.s. computer" + " science", "may " + "2028"];
+
+    // Act
+    const offenders = filesContaining((text) => retired.some((phrase) => text.toLowerCase().includes(phrase)));
+
+    // Assert
+    expect(offenders).toEqual([]);
+  });
 });
 
 describe("profile facts", () => {
