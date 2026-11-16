@@ -1,0 +1,11 @@
+/* Signature motion for /experience: the timeline spine draws top-down once on load.
+   The global prefers-reduced-motion rule disables this, leaving the spine fully drawn. */
+.spine {
+  transform-origin: top;
+  animation: spine-draw 900ms cubic-bezier(0.16, 1, 0.3, 1) 150ms both;
+}
+
+@keyframes spine-draw {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}

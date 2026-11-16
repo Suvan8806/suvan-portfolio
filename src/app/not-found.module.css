@@ -1,0 +1,12 @@
+/* 404 signature: the EKG trace draws once left to right and ends flat.
+   Reduced motion: the global rule removes the animation, leaving the full static trace. */
+.trace {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: trace 1600ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
+}
+
+@keyframes trace {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}

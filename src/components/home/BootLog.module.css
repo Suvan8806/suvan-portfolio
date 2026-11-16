@@ -1,0 +1,15 @@
+/* Home motion signature: the boot log types in once (~900ms), then stays static.
+   The resting state is fully visible, so the global reduced-motion rule
+   (animation: none) shows the finished log. */
+.line {
+  animation: type var(--dur) steps(var(--steps), end) var(--delay) both;
+}
+
+@keyframes type {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}

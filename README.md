@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Suvan Kasina — personal site
 
-## Getting Started
+A multi-page personal site for Suvan Kasina (ML / AI engineer), styled after the Cyberpunk 2077 cyberware ("ripperdoc") screen. The `/skills` page is the signature: a clickable brain whose regions open the skill sets installed in them.
 
-First, run the development server:
+## Stack
+
+Next.js 16 (App Router, Cache Components, React Compiler) · React 19 · TypeScript · Tailwind CSS v4.
+
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # production build
+npx tsc --noEmit   # type-check
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/              routes: / about experience projects projects/[slug] skills contact, not-found
+    layout.tsx      fonts (Rajdhani, Share Tech Mono), metadata, header/footer, skip link
+    globals.css     theme tokens (@theme) and HUD component classes
+    icon.svg        favicon
+  components/
+    SiteHeader.tsx  game-style top bar (stats, tabs, resume)
+    SiteFooter.tsx
+    ui/             shared primitives: PageHeader, Panel, Chip, SectionLabel, StatReadout,
+                    GlitchText, ItemSlot, ProjectCard, AwardRibbon, Container, icons
+  content/          ALL site facts (see below)
+  lib/site.ts       nav tabs and values derived from content (GPA, prize stat)
+design/DESIGN.md    design contract: colors, type, components, per-page specs
+reference/          visual references (palette, CP2077 upgrade screen)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Content
 
-## Learn More
+Every fact on the site comes from `src/content/`. Edit these files, never the pages:
 
-To learn more about Next.js, take a look at the following resources:
+- `profile.ts` — name, links, bio, education, coursework, awards, availability
+- `experience.ts` — roles, in display order
+- `projects.ts` — projects, categories, flagship flags
+- `skills.ts` — brain regions and the skills in each
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The resume is served from `public/resume.pdf`. To add a photo, put it in `public/` and set `PROFILE.photoSrc`.
