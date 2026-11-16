@@ -36,14 +36,6 @@ function HudRings() {
   return (
     <g aria-hidden="true" fill="none">
       <circle cx={CX} cy={CY} r={236} className="stroke-cp-red/15" strokeWidth={1} />
-      <circle
-        cx={CX}
-        cy={CY}
-        r={206}
-        className="animate-spin-slow stroke-cp-red/60"
-        strokeWidth={1.5}
-        strokeDasharray="3 9 24 9"
-      />
       <circle cx={CX} cy={CY} r={194} className="stroke-cp-red/35" strokeWidth={1} strokeDasharray="1 5" />
       <circle cx={CX} cy={CY} r={176} className="stroke-cp-red/10" strokeWidth={8} />
       <path
@@ -160,12 +152,44 @@ function BrainGlow() {
 }
 
 /**
+ * The rotating dashed ring sits in its own <div> that is spun with a CSS transform,
+ * so the rotation runs on the GPU compositor with no main-thread work. Animating a
+ * circle inside the main SVG would force the whole brain (blur filter included) to
+ * repaint every frame.
+ */
+function SpinningRing() {
+  return (
+    <div aria-hidden="true" className="spin-layer pointer-events-none absolute inset-0">
+      <svg
+        viewBox={VIEWBOX_ATTR}
+        preserveAspectRatio="xMidYMid meet"
+        className="h-full w-full overflow-visible"
+        focusable="false"
+      >
+        <circle
+          cx={CX}
+          cy={CY}
+          r={206}
+          fill="none"
+          className="stroke-cp-red/60"
+          strokeWidth={1.5}
+          strokeDasharray="3 9 24 9"
+        />
+      </svg>
+    </div>
+  );
+}
+
+/**
  * Side-view brain wireframe: HUD rings, wires to the label columns, clickable regions.
  * Decorative for assistive tech (aria-hidden); the label modules are the accessible control.
  */
+
 export function BrainSvg({ selectedId, hoveredId, visible, onSelect, onHover }: BrainSvgProps) {
   const cableLive = selectedId === "neural-link";
   return (
+    <>
+    <SpinningRing />
     <svg
       viewBox={VIEWBOX_ATTR}
       preserveAspectRatio="xMidYMid meet"
@@ -208,5 +232,6 @@ export function BrainSvg({ selectedId, hoveredId, visible, onSelect, onHover }: 
         />
       ))}
     </svg>
+    </>
   );
 }

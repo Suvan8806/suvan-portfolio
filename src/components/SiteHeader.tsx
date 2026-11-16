@@ -79,7 +79,7 @@ export function SiteHeader() {
   const { isOpen, toggle, buttonRef } = useMenu(pathname);
 
   return (
-    <header className="sticky top-0 z-50 bg-ink/90 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 bg-ink/95">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-8">
         <Link href="/" className="label-red min-w-0 truncate hover:text-text lg:hidden">
           {PROFILE.name}

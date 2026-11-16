@@ -161,7 +161,7 @@ export function BrainMap() {
             }}
             className="cp-btn min-h-11 bg-ink/95 normal-case tracking-[0.06em] text-cp-cyan shadow-[inset_0_0_0_1px_rgb(85_234_212/0.7),0_0_24px_rgb(85_234_212/0.25)] hover:bg-cp-cyan hover:text-void"
           >
-            <span aria-hidden="true" className="inline-block animate-bounce">↓</span>
+            <span aria-hidden="true" className="inline-block animate-bounce [animation-iteration-count:4]">↓</span>
             {selected.skills.length} {selected.category} skills listed below
           </a>
         </div>
